@@ -236,6 +236,7 @@ Resources:
                 Repo: !Ref Repo
                 Branch: !Ref DevBranch
                 OAuthToken: !Ref OAuthToken
+                PollForSourceChanges: false
               OutputArtifacts:
                 - Name: SourceOutput
         - Name: Build
@@ -309,6 +310,7 @@ Resources:
                 Repo: !Ref Repo
                 Branch: !Ref ProdBranch
                 OAuthToken: !Ref OAuthToken
+                PollForSourceChanges: false
               OutputArtifacts:
                 - Name: SourceOutput
         - Name: Build
