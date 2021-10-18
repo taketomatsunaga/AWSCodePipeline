@@ -26,3 +26,7 @@ aws cloudformation create-stack.
     ParameterKey=DevModuleStackName,ParameterValue=dev-test-module \
     ParameterKey=ProdModuleStackName,ParameterValue=prod-test-module
 ```
+
+## Additional Configuration
+
+- Setup LifeCycle for S3 Objects to have expiration.
