@@ -1,0 +1,31 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: AWS::Serverless-2016-10-31
+Description: A template for deploying Lambda functions.
+
+Parameters:
+  LambdaFunctionName:
+    Type: String
+  LambdaFunctionHandler:
+    Type: String
+  NodeEnv:
+    Type: String
+
+Resources:
+  nodejsLambdaSample:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: "../BusinessOpportunityService"
+      FunctionName: !Ref LambdaFunctionName
+      Handler: !Ref LambdaFunctionHandler
+      Runtime: nodejs14.x
+      AutoPublishAlias: live
+      Environment:
+        Variables:
+          NODE_ENV: !Ref NodeEnv
+      Policies:
+        - Version: "2012-10-17"
+          Statement:
+            - Effect: "Allow"
+              Action:
+                - "lambda:InvokeFunction"
+              Resource: "*"

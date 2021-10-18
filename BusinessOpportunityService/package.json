@@ -1,0 +1,47 @@
+{
+  "name": "business-opportunity-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "log4js": "^6.3.0",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "jest": "^26.6.3",
+    "jest-junit": "^12.0.0"
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "service/**/*.{js,ts}"
+    ],
+    "coverageDirectory": "<rootDir>/coverage",
+    "reporters": [
+      "default",
+      [
+        "jest-junit",
+        {
+          "outputDirectory": "<rootDir>/reports",
+          "outputName": "test-business-opportunity-service.xml"
+        }
+      ]
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 10,
+        "functions": 10,
+        "lines": 10,
+        "statements": 15
+      }
+    },
+    "testMatch": [
+      "**/__tests__/**/*.[jt]s?(x)"
+    ]
+  }
+}

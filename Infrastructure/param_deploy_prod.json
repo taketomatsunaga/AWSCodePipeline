@@ -1,0 +1,7 @@
+{
+  "Parameters": {
+    "LambdaFunctionName": "TaketoNodejsSample-production",
+    "LambdaFunctionHandler": "index.handler",
+    "NodeEnv": "production"
+  }
+}

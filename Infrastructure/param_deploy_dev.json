@@ -1,0 +1,7 @@
+{
+  "Parameters": {
+    "LambdaFunctionName": "TaketoNodejsSample-development",
+    "LambdaFunctionHandler": "index.handler",
+    "NodeEnv": "development"
+  }
+}

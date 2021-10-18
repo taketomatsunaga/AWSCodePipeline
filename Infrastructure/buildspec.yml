@@ -1,0 +1,42 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - cd BusinessOpportunityService
+      - npm install --also=dev
+      - cd ../
+  build:
+    commands:
+      - cd BusinessOpportunityService
+      - npm test
+      # remove dev dependencies and reinstall for production
+      - |
+        if [ "$NODE_ENV" = "production" ] ; then
+          rm -rf node_modules
+          npm install
+        fi
+      - cd ../
+  post_build:
+    commands:
+      - |
+        aws cloudformation package \
+          --template-file $TEMPLATE_FILE_PATH \
+          --s3-bucket $S3_BUCKET \
+          --s3-prefix $NODE_ENV \
+          --output-template-file $PACKAGED_TEMPLATE_FILE_PATH
+
+artifacts:
+  files:
+    - $PACKAGED_TEMPLATE_FILE_PATH
+    - "**/*"
+reports:
+  jest_reports:
+    files:
+      - test-business-opportunity-service.xml
+    file-format: JUNITXML
+    base-directory: BusinessOpportunityService/reports
+  clover-report:
+    files:
+      - "BusinessOpportunityService/coverage/clover.xml"
+    file-format: "CLOVERXML"
