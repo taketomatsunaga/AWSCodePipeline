@@ -13,7 +13,7 @@ This template stack will create components below.
 If you update the stack after creation, call update-stack instead of create-stack.
 
 ```
-aws cloudformation create-stack.
+aws cloudformation create-stack
  \
     --stack-name auto-deploy-pipeline \
     --template-body file://Infrastructure/template_pipeline.yml \
